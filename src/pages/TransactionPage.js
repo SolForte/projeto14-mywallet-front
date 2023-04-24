@@ -24,7 +24,7 @@ export default function TransactionsPage() {
     if (tipo !== LITERAL_ENTRADA && tipo !== LITERAL_SAIDA) {
       navigate("/");
     }
-  }, [auth]);
+  }, [auth, navigate, tipo]);
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -53,7 +53,7 @@ export default function TransactionsPage() {
     });
 
     promise.catch((erro) => {
-      alert(`Erro: ${erro.response.data}`);
+      alert(`${erro.response.status}: ${erro.response.data}`);
     });
   }
 

@@ -43,7 +43,7 @@ export default function HomePage() {
       });
 
       promise.catch((erro) => {
-        alert(`Erro: ${erro.response.data}`);
+        alert(`${erro.response.status}: ${erro.response.data}`);
       });
     } else {
       navigate("/");

@@ -52,7 +52,7 @@ export default function SignUpPage() {
 
     promise.catch((erro) => {
       setIsLoading(false);
-      alert(`Erro: ${erro.response.data}`);
+      alert(`${erro.response.status}: ${erro.response.data}`);
     });
   }
 

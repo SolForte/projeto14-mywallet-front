@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import MyWalletLogo from "../components/MyWalletLogo";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth.js";
 
@@ -20,7 +20,7 @@ export default function SignInPage() {
         navigate("/home");
       }
     }
-  }, [auth]);
+  }, [auth, navigate]);
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -44,7 +44,7 @@ export default function SignInPage() {
 
     promise.catch((erro) => {
       setIsLoading(false);
-      alert(`Erro: ${erro.response.data}`);
+      alert(`${erro.response.status}: ${erro.response.data}`);
     });
   }
 
