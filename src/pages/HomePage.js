@@ -59,6 +59,8 @@ export default function HomePage() {
     }
   }
 
+  console.log(transacoes);
+
   return (
     <HomeContainer>
       <Header>
@@ -68,7 +70,7 @@ export default function HomePage() {
 
       <TransactionsContainer>
         <ul>
-          {transacoes ? (
+          {transacoes && transacoes.length > 0 ? (
             transacoes.map((elemento) => {
               return (
                 <ListItemContainer key={elemento._id}>
@@ -89,9 +91,14 @@ export default function HomePage() {
               );
             })
           ) : (
-            <p>Não há registros de entrada ou saída</p>
+            <></>
           )}
         </ul>
+        {transacoes === null || transacoes.length === 0 ? (
+          <SemRegistro>Não há registros de entrada ou saída</SemRegistro>
+        ) : (
+          <></>
+        )}
 
         <article>
           <strong>Saldo</strong>
@@ -100,28 +107,38 @@ export default function HomePage() {
       </TransactionsContainer>
 
       <ButtonsContainer>
-        <button>
-          <Link to={"/nova-transacao/entrada"}>
+        <Link to={"/nova-transacao/entrada"}>
+          <button>
             <AiOutlinePlusCircle />
             <p>
               Nova <br /> entrada
             </p>
-          </Link>
-        </button>
+          </button>
+        </Link>
 
-        <button>
-          <Link to={"/nova-transacao/saida"}>
+        <Link to={"/nova-transacao/saida"}>
+          <button>
             <AiOutlineMinusCircle />
             <p>
               Nova <br />
               saída
             </p>
-          </Link>
-        </button>
+          </button>
+        </Link>
       </ButtonsContainer>
     </HomeContainer>
   );
 }
+const SemRegistro = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  color: #868686;
+`;
 
 const HomeContainer = styled.div`
   display: flex;
@@ -160,21 +177,19 @@ const ButtonsContainer = styled.section`
   margin-bottom: 0;
   display: flex;
   gap: 15px;
-
-  button {
-    width: 50%;
-    height: 115px;
-    font-size: 22px;
-    text-align: left;
+  a {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    a {
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    button {
+      height: 115px;
+      font-size: 22px;
+      text-align: left;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding-top: 0px;
-      height: 100%;
       p {
         font-size: 18px;
       }
