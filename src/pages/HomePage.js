@@ -210,7 +210,7 @@ const ButtonsContainer = styled.section`
 const Value = styled.div`
   font-size: 16px;
   text-align: right;
-  color: ${(props) => (props.color === "positivo" ? "green" : "red")};
+  color: ${(props) => (props.color === "positivo" ? "#03AC00" : "#C70000")};
 `;
 const ListItemContainer = styled.li`
   display: flex;
