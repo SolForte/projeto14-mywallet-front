@@ -9,6 +9,7 @@ import axios from "axios";
 
 export default function HomePage() {
   const POSITIVO_LITERAL = "positivo";
+  const ENTRADA_LITERAL = "entrada";
   const EMPTY_LITERAL = "";
 
   const { auth } = useAuth();
@@ -67,21 +68,29 @@ export default function HomePage() {
 
       <TransactionsContainer>
         <ul>
-          <ListItemContainer>
-            <div>
-              <span>30/11</span>
-              <strong>Almoço mãe</strong>
-            </div>
-            <Value color={"negativo"}>120,00</Value>
-          </ListItemContainer>
-
-          <ListItemContainer>
-            <div>
-              <span>15/11</span>
-              <strong>Salário</strong>
-            </div>
-            <Value color={"positivo"}>3000,00</Value>
-          </ListItemContainer>
+          {transacoes ? (
+            transacoes.map((elemento) => {
+              return (
+                <ListItemContainer key={elemento._id}>
+                  <div>
+                    <span>{elemento.data}</span>
+                    <strong>{elemento.titulo}</strong>
+                  </div>
+                  <Value
+                    color={
+                      ENTRADA_LITERAL === elemento.tipo
+                        ? POSITIVO_LITERAL
+                        : null
+                    }
+                  >
+                    {elemento.valor}
+                  </Value>
+                </ListItemContainer>
+              );
+            })
+          ) : (
+            <p>Não há registros de entrada ou saída</p>
+          )}
         </ul>
 
         <article>
