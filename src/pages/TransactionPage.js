@@ -53,7 +53,9 @@ export default function TransactionsPage() {
     });
 
     promise.catch((erro) => {
-      alert(`${erro.response.status}: ${erro.response.data}`);
+      alert(
+        `${erro.response.status} (${erro.response.statusText}): ${erro.response.data}`
+      );
     });
   }
 

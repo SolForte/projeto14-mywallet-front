@@ -44,7 +44,9 @@ export default function SignInPage() {
 
     promise.catch((erro) => {
       setIsLoading(false);
-      alert(`${erro.response.status}: ${erro.response.data}`);
+      alert(
+        `${erro.response.status} (${erro.response.statusText}): ${erro.response.data}`
+      );
     });
   }
 
