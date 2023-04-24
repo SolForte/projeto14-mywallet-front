@@ -97,12 +97,12 @@ export default function HomePage() {
           ) : (
             <></>
           )}
+          {transacoes === null || transacoes.length === 0 ? (
+            <SemRegistro>Não há registros de entrada ou saída</SemRegistro>
+          ) : (
+            <></>
+          )}
         </ul>
-        {transacoes === null || transacoes.length === 0 ? (
-          <SemRegistro>Não há registros de entrada ou saída</SemRegistro>
-        ) : (
-          <></>
-        )}
 
         <article>
           <strong>Saldo</strong>
@@ -167,6 +167,13 @@ const TransactionsContainer = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  ul {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    height: 350px;
+  }
   article {
     display: flex;
     justify-content: space-between;
