@@ -43,7 +43,7 @@ export default function HomePage() {
 
       <ButtonsContainer>
         <button>
-          <Link>
+          <Link to={"/nova-transacao/entrada"}>
             <AiOutlinePlusCircle />
             <p>
               Nova <br /> entrada
@@ -52,7 +52,7 @@ export default function HomePage() {
         </button>
 
         <button>
-          <Link>
+          <Link to={"/nova-transacao/saida"}>
             <AiOutlineMinusCircle />
             <p>
               Nova <br />
