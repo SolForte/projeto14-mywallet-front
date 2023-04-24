@@ -1,8 +1,11 @@
-import styled from "styled-components"
-import { BiExit } from "react-icons/bi"
-import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai"
+import styled from "styled-components";
+import { BiExit } from "react-icons/bi";
+import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 
 export default function HomePage() {
+  console.log(localStorage);
+  console.log(JSON.parse(localStorage.getItem("auth")));
+
   return (
     <HomeContainer>
       <Header>
@@ -35,27 +38,30 @@ export default function HomePage() {
         </article>
       </TransactionsContainer>
 
-
       <ButtonsContainer>
         <button>
           <AiOutlinePlusCircle />
-          <p>Nova <br /> entrada</p>
+          <p>
+            Nova <br /> entrada
+          </p>
         </button>
         <button>
           <AiOutlineMinusCircle />
-          <p>Nova <br />saída</p>
+          <p>
+            Nova <br />
+            saída
+          </p>
         </button>
       </ButtonsContainer>
-
     </HomeContainer>
-  )
+  );
 }
 
 const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: calc(100vh - 50px);
-`
+`;
 const Header = styled.header`
   display: flex;
   align-items: center;
@@ -64,7 +70,7 @@ const Header = styled.header`
   margin-bottom: 15px;
   font-size: 26px;
   color: white;
-`
+`;
 const TransactionsContainer = styled.article`
   flex-grow: 1;
   background-color: #fff;
@@ -76,19 +82,19 @@ const TransactionsContainer = styled.article`
   justify-content: space-between;
   article {
     display: flex;
-    justify-content: space-between;   
+    justify-content: space-between;
     strong {
       font-weight: 700;
       text-transform: uppercase;
     }
   }
-`
+`;
 const ButtonsContainer = styled.section`
   margin-top: 15px;
   margin-bottom: 0;
   display: flex;
   gap: 15px;
-  
+
   button {
     width: 50%;
     height: 115px;
@@ -101,12 +107,12 @@ const ButtonsContainer = styled.section`
       font-size: 18px;
     }
   }
-`
+`;
 const Value = styled.div`
   font-size: 16px;
   text-align: right;
   color: ${(props) => (props.color === "positivo" ? "green" : "red")};
-`
+`;
 const ListItemContainer = styled.li`
   display: flex;
   justify-content: space-between;
@@ -118,4 +124,4 @@ const ListItemContainer = styled.li`
     color: #c6c6c6;
     margin-right: 10px;
   }
-`
+`;

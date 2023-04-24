@@ -52,7 +52,7 @@ export default function SignUpPage() {
 
     promise.catch((erro) => {
       setIsLoading(false);
-      alert(`Erro, ${erro.response.data}`);
+      alert(`Erro: ${erro.response.data}`);
     });
   }
 
@@ -112,7 +112,7 @@ export default function SignUpPage() {
         </Button>
       </Form>
 
-      <Link>Já tem uma conta? Entre agora!</Link>
+      <Link to={"/"}>Já tem uma conta? Entre agora!</Link>
     </SingUpContainer>
   );
 }
