@@ -68,6 +68,7 @@ export default function TransactionsPage() {
           name="valor"
           placeholder="Valor"
           type="number"
+          step="0.01"
           value={formData.valor}
           onChange={handleChange}
           required
