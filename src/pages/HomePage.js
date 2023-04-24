@@ -70,8 +70,10 @@ export default function HomePage() {
   return (
     <HomeContainer>
       <Header>
-        <h1>Olá, {auth ? auth.nome : null}</h1>
-        <BiExit onClick={() => logOut()} />
+        <h1>
+          Olá, <span data-test="user-name">{auth ? auth.nome : null}</span>
+        </h1>
+        <BiExit data-test="logout" onClick={() => logOut()} />
       </Header>
 
       <TransactionsContainer>
@@ -82,9 +84,10 @@ export default function HomePage() {
                 <ListItemContainer key={elemento._id}>
                   <div>
                     <span>{elemento.data}</span>
-                    <strong>{elemento.titulo}</strong>
+                    <strong data-test="registry-name">{elemento.titulo}</strong>
                   </div>
                   <Value
+                    data-test="registry-amount"
                     color={
                       ENTRADA_LITERAL === elemento.tipo
                         ? POSITIVO_LITERAL
@@ -108,12 +111,14 @@ export default function HomePage() {
 
         <article>
           <strong>Saldo</strong>
-          <Value color={corSaldo}>{saldo}</Value>
+          <Value data-test="total-amount" color={corSaldo}>
+            {saldo}
+          </Value>
         </article>
       </TransactionsContainer>
 
       <ButtonsContainer>
-        <Link to={"/nova-transacao/entrada"}>
+        <Link data-test="new-income" to={"/nova-transacao/entrada"}>
           <button>
             <AiOutlinePlusCircle />
             <p>
@@ -122,7 +127,7 @@ export default function HomePage() {
           </button>
         </Link>
 
-        <Link to={"/nova-transacao/saida"}>
+        <Link data-test="new-expense" to={"/nova-transacao/saida"}>
           <button>
             <AiOutlineMinusCircle />
             <p>
@@ -144,6 +149,7 @@ const SemRegistro = styled.p`
   line-height: 23px;
   text-align: center;
   color: #868686;
+  margin: auto;
 `;
 
 const HomeContainer = styled.div`

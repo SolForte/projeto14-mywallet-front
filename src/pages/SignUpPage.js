@@ -64,6 +64,7 @@ export default function SignUpPage() {
         <MyWalletLogo />
 
         <Input
+          data-test="name"
           placeholder="Nome"
           type="text"
           name="nome"
@@ -74,6 +75,7 @@ export default function SignUpPage() {
         />
 
         <Input
+          data-test="email"
           placeholder="E-mail"
           type="email"
           name="email"
@@ -84,6 +86,7 @@ export default function SignUpPage() {
         />
 
         <Input
+          data-test="password"
           placeholder="Senha"
           type="password"
           name="senha"
@@ -95,6 +98,7 @@ export default function SignUpPage() {
         />
 
         <Input
+          data-test="conf-password"
           placeholder="Confirme a senha"
           type="password"
           name="confirmarSenha"
@@ -105,7 +109,7 @@ export default function SignUpPage() {
           required
         />
 
-        <Button type="submit" disabled={isLoading}>
+        <Button data-test="sign-up-submit" type="submit" disabled={isLoading}>
           {isLoading ? (
             <ThreeDots type="ThreeDots" color="#FFFFFF" height="100%" />
           ) : (

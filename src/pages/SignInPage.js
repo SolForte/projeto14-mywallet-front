@@ -55,6 +55,7 @@ export default function SignInPage() {
       <Form onSubmit={handleSubmit}>
         <MyWalletLogo />
         <Input
+          data-test="email"
           type="email"
           placeholder="email"
           name="email"
@@ -64,6 +65,7 @@ export default function SignInPage() {
           required
         />
         <Input
+          data-test="password"
           type="password"
           placeholder="senha"
           name="senha"
@@ -72,7 +74,7 @@ export default function SignInPage() {
           disabled={isLoading}
           required
         />
-        <Button type="submit" disabled={isLoading}>
+        <Button data-test="sign-in-submit" type="submit" disabled={isLoading}>
           {isLoading ? (
             <ThreeDots type="ThreeDots" color="#FFFFFF" height="100%" />
           ) : (
