@@ -5,6 +5,7 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import TransactionsPage from "./pages/TransactionPage";
 import { AuthProvider } from "./contexts/AuthContext.js";
+import RedirectHome from "./pages/redirectHome.js";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
               path="/nova-transacao/:tipo"
               element={<TransactionsPage />}
             />
+            <Route path="/nova-transacao" element={<RedirectHome />} />
           </Routes>
         </BrowserRouter>
       </PagesContainer>

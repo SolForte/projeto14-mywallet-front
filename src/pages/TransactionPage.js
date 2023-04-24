@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
@@ -13,6 +13,18 @@ export default function TransactionsPage() {
     tipo: tipo,
   });
   const navigate = useNavigate();
+
+  const LITERAL_ENTRADA = "entrada";
+  const LITERAL_SAIDA = "saida";
+
+  useEffect(() => {
+    if (!auth) {
+      navigate("/");
+    }
+    if (tipo !== LITERAL_ENTRADA && tipo !== LITERAL_SAIDA) {
+      navigate("/");
+    }
+  }, [auth]);
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
