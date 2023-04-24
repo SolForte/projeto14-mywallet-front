@@ -16,6 +16,12 @@ export default function HomePage() {
   const [transacoes, setTransacoes] = useState(null);
   const [saldo, setSaldo] = useState(0);
   const [corSaldo, setCorSaldo] = useState(EMPTY_LITERAL);
+  const navigate = useNavigate();
+
+  function logOut() {
+    localStorage.removeItem("auth");
+    navigate("/");
+  }
 
   useEffect(() => {
     if (auth) {
@@ -40,9 +46,9 @@ export default function HomePage() {
         alert(`Erro: ${erro.response.data}`);
       });
     } else {
-      Navigate("/");
+      navigate("/");
     }
-  }, []);
+  }, [auth]);
 
   function calculoSaldo(array) {
     let total = 0;
@@ -59,13 +65,11 @@ export default function HomePage() {
     }
   }
 
-  console.log(transacoes);
-
   return (
     <HomeContainer>
       <Header>
         <h1>Olá, {auth.nome}</h1>
-        <BiExit />
+        <BiExit onClick={() => logOut()} />
       </Header>
 
       <TransactionsContainer>

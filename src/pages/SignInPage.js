@@ -15,10 +15,12 @@ export default function SignInPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (auth && auth.token) {
-      navigate("/home");
+    if (localStorage.auth) {
+      if (auth && auth.token) {
+        navigate("/home");
+      }
     }
-  }, []);
+  }, [auth]);
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
