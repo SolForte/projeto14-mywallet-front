@@ -7,9 +7,7 @@ export function AuthProvider({ children }) {
   const [auth, setAuth] = useState(localStorageConversion);
 
   function login(data) {
-    //Parâmetro {data} equivale ao {response.data}, por sua vez obtido através do .then da const {promise}. I.e. response.data = data = { token, idUsuario, nome}
     setAuth(data);
-    //Insere no local storage uma string na forma; auth: { token, idUsuario, nome}
     localStorage.setItem("auth", JSON.stringify(data));
   }
 

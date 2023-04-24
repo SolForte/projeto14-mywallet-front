@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { BiExit } from "react-icons/bi";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
-import { useContext, useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth.js";
 import axios from "axios";
@@ -48,7 +48,7 @@ export default function HomePage() {
     } else {
       navigate("/");
     }
-  }, [auth]);
+  }, [auth, navigate]);
 
   function calculoSaldo(array) {
     let total = 0;
