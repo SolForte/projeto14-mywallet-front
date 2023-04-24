@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+import useAuth from "../hooks/useAuth.js";
 
 export default function TransactionsPage() {
+  const { auth } = useAuth();
   const { tipo } = useParams();
   const [formData, setFormData] = useState({
     titulo: "",
@@ -19,7 +21,7 @@ export default function TransactionsPage() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const { token } = JSON.parse(localStorage.getItem("auth"));
+    const { token } = auth;
 
     const config = {
       headers: {

@@ -1,18 +1,67 @@
 import styled from "styled-components";
 import { BiExit } from "react-icons/bi";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
-import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth.js";
+import axios from "axios";
 
 export default function HomePage() {
-  const { token, nome, idUsuario } = JSON.parse(localStorage.getItem("auth"));
-  console.log(JSON.parse(localStorage.getItem("auth")));
-  console.log(nome);
+  const POSITIVO_LITERAL = "positivo";
+  const EMPTY_LITERAL = "";
+
+  const { auth } = useAuth();
+  const [transacoes, setTransacoes] = useState(null);
+  const [saldo, setSaldo] = useState(0);
+  const [corSaldo, setCorSaldo] = useState(EMPTY_LITERAL);
+
+  useEffect(() => {
+    if (auth) {
+      const { token } = auth;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const promise = axios.get(
+        `${process.env.REACT_APP_API_URL}/historico-transacao`,
+        config
+      );
+
+      promise.then((response) => {
+        setTransacoes(response.data);
+        calculoSaldo(response.data);
+      });
+
+      promise.catch((erro) => {
+        alert(`Erro: ${erro.response.data}`);
+      });
+    } else {
+      Navigate("/");
+    }
+  }, []);
+
+  function calculoSaldo(array) {
+    let total = 0;
+    array.forEach((element) => {
+      if (element.tipo === "entrada") {
+        total += Number(element.valor);
+      } else {
+        total -= Number(element.valor);
+      }
+    });
+    setSaldo(total);
+    if (total > 0) {
+      setCorSaldo(POSITIVO_LITERAL);
+    }
+  }
 
   return (
     <HomeContainer>
       <Header>
-        <h1>Olá, {nome}</h1>
+        <h1>Olá, {auth.nome}</h1>
         <BiExit />
       </Header>
 
@@ -37,7 +86,7 @@ export default function HomePage() {
 
         <article>
           <strong>Saldo</strong>
-          <Value color={"positivo"}>2880,00</Value>
+          <Value color={corSaldo}>{saldo}</Value>
         </article>
       </TransactionsContainer>
 
