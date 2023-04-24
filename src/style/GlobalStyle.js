@@ -53,6 +53,6 @@ const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         padding-top: 30px;
     }
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;

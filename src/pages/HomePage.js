@@ -1,15 +1,18 @@
 import styled from "styled-components";
 import { BiExit } from "react-icons/bi";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
+import { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
-  console.log(localStorage);
+  const { token, nome, idUsuario } = JSON.parse(localStorage.getItem("auth"));
   console.log(JSON.parse(localStorage.getItem("auth")));
+  console.log(nome);
 
   return (
     <HomeContainer>
       <Header>
-        <h1>Olá, Fulano</h1>
+        <h1>Olá, {nome}</h1>
         <BiExit />
       </Header>
 
@@ -40,17 +43,22 @@ export default function HomePage() {
 
       <ButtonsContainer>
         <button>
-          <AiOutlinePlusCircle />
-          <p>
-            Nova <br /> entrada
-          </p>
+          <Link>
+            <AiOutlinePlusCircle />
+            <p>
+              Nova <br /> entrada
+            </p>
+          </Link>
         </button>
+
         <button>
-          <AiOutlineMinusCircle />
-          <p>
-            Nova <br />
-            saída
-          </p>
+          <Link>
+            <AiOutlineMinusCircle />
+            <p>
+              Nova <br />
+              saída
+            </p>
+          </Link>
         </button>
       </ButtonsContainer>
     </HomeContainer>
@@ -103,8 +111,15 @@ const ButtonsContainer = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    p {
-      font-size: 18px;
+    a {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: 0px;
+      height: 100%;
+      p {
+        font-size: 18px;
+      }
     }
   }
 `;

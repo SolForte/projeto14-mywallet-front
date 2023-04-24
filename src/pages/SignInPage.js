@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import MyWalletLogo from "../components/MyWalletLogo";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth.js";
 
@@ -11,6 +11,7 @@ export default function SignInPage() {
   const [formData, setFormData] = useState({ email: "", senha: "" });
   const [isLoading, setIsLoading] = useState(false);
   const { auth, login } = useAuth();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,8 +19,6 @@ export default function SignInPage() {
       navigate("/home");
     }
   }, []);
-
-  console.log(localStorage);
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
