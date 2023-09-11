@@ -10,7 +10,7 @@ This project is a web application. Implemented features are:
 </ul>
 
 ## Technologies
-The following dependencies were used in this project:
+The following dependencies and technologies were used in this project:
 
 ![axios](https://img.shields.io/badge/axios-671ddf?&style=for-the-badge&logo=axios&logoColor=white
 )
