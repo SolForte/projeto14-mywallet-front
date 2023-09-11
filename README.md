@@ -27,7 +27,7 @@ The following dependencies were used in this project:
 ```bash
 npm install
 ```
-3. Create a `/.env` file and add the environment variable `REACT_APP_API_URL` with the address of your API is running. The required API for My Wallet is available [here](https://github.com/SolForte/projeto14-mywallet-back). An example of `/.env` file is:
+3. Create a `/.env` file and add the environment variable `REACT_APP_API_URL` with the address of your API is running. The required API for My Wallet is available [here](https://github.com/SolForte/projeto14-mywallet-back). An example of `/.env` file is avaiable on `/.env.example`:
 ```
 REACT_APP_API_URL=http://localhost:3000
 ```
