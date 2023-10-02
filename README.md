@@ -1,5 +1,7 @@
 # My Wallet
 My Wallet is a finance management application.
+
+![My Wallet](https://i.imgur.com/oo9Xq4p.jpg "My Wallet")
 ## About
 This project is a web application. Implemented features are:
 <ul>
